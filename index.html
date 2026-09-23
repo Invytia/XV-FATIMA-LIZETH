@@ -215,6 +215,13 @@
             text-shadow: 0 0 30px var(--silver-glow);
         }
 
+        /* Nueva clase para nombres manuscritos */
+        .name-script {
+            font-family: 'Pinyon Script', cursive; font-size: 60px;
+            color: var(--silver-magic); margin-bottom: 5px; line-height: 1.2; font-weight: 400;
+            text-shadow: 0 0 20px var(--silver-glow);
+        }
+
         .body-serif {
             font-family: 'Cormorant Garamond', serif; font-size: 24px;
             line-height: 1.6; color: var(--text-light); font-style: italic;
@@ -350,6 +357,7 @@
         @media (max-width: 480px) {
             .env-title { font-size: 65px; }
             .title-script { font-size: 70px; }
+            .name-script { font-size: 50px; }
             .section-block { padding: 90px 15px; }
             .info-data { font-size: 30px; }
             .map-box { height: 280px; }
@@ -449,19 +457,30 @@
         <!-- Familia -->
         <section class="section-block">
             <div class="anim-element anim-fade-up delay-1 info-title">Con la bendición de mis padres</div>
-            <div class="anim-element anim-fade-up delay-2 info-data">Edgar Gómez Sánchez</div>
+            <div class="anim-element anim-fade-up delay-2 name-script">Edgar Gómez Sánchez</div>
             <div class="anim-element anim-fade-up delay-3" style="font-family: 'Cinzel', serif; font-size: 24px; color: var(--pink-magic); margin: 15px 0; text-shadow: 0 0 15px var(--pink-glow);">&</div>
-            <div class="anim-element anim-fade-up delay-3 info-data">Claudia Lizzet Romero Nava</div>
+            <div class="anim-element anim-fade-up delay-3 name-script">Claudia Lizzet Romero Nava</div>
             
             <div class="anim-element anim-zoom delay-4 line-horizontal"></div>
             
             <div class="anim-element anim-fade-up delay-4 info-title">Y mi Madrina</div>
-            <div class="anim-element anim-fade-up delay-4 info-data">Ana Carmen Gómez Sánchez</div>
+            <div class="anim-element anim-fade-up delay-4 name-script">Ana Carmen Gómez Sánchez</div>
         </section>
 
-        <!-- Ubicación e Itinerario -->
+        <!-- Ubicación Ceremonia Religiosa -->
         <section class="section-block glass-panel">
-            <div class="anim-element anim-fade-up delay-1 info-title">Dónde y Cuándo</div>
+            <div class="anim-element anim-fade-up delay-1 info-title">Ceremonia Religiosa</div>
+            <div class="anim-element anim-fade-up delay-2 info-data">Jardín Salón Doña Bella</div>
+            
+            <div class="anim-element anim-zoom delay-3 map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.122078030741!2d-99.58460602452656!3d18.970215255284458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd950e928b7a61%3A0x883361e6e8bf5259!2sDo%C3%B1a%20Bella!5e0!3m2!1ses-419!2smx!4v1790045078063!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <a href="https://share.google/fEnduQBn1YOmYh4Cf" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación en Mapa</a>
+        </section>
+
+        <!-- Ubicación Recepción e Itinerario -->
+        <section class="section-block glass-panel" style="border-top: none;">
+            <div class="anim-element anim-fade-up delay-1 info-title">Recepción y Fiesta</div>
             <div class="anim-element anim-fade-up delay-2 info-data">Jardín Salón Doña Bella</div>
             
             <div class="anim-element anim-zoom delay-3 map-box">
@@ -486,6 +505,10 @@
                 <div class="timeline-item">
                     <div class="time-badge">6:00 PM</div>
                     <div class="time-desc">Cena de Celebración</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">8:00 PM</div>
+                    <div class="time-desc">Vals</div>
                 </div>
             </div>
         </section>
