@@ -11,7 +11,7 @@
             --bg-night: #060810;       /* Azul medianoche muy profundo */
             --bg-glass: rgba(255, 255, 255, 0.03);
             --silver-magic: #E0E6ED;   /* Plateado suave */
-            --silver-dark: #A3B1C6;    
+            --silver-dark: #A3B1C6;  
             --pink-magic: #FFB6C1;     /* Rosa claro brillante */
             --pink-glow: rgba(255, 182, 193, 0.6);
             --silver-glow: rgba(224, 230, 237, 0.5);
@@ -64,7 +64,6 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
-            /* Ahora el canvas es visible desde el principio */
             opacity: 1; 
         }
 
@@ -86,7 +85,7 @@
         /* --- SOBRE BLANCO INICIAL MÁGICO --- */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: transparent; /* Fondo transparente para ver las estrellas */
+            background-color: transparent; 
             z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 1.2s ease-in-out, visibility 1.2s;
         }
@@ -109,7 +108,6 @@
 
         .envelope-wrapper { 
             position: relative; cursor: pointer; transition: transform 0.6s var(--transition-smooth); z-index: 10; 
-            /* Aura mágica detrás del sobre */
             box-shadow: 0 0 80px rgba(255, 182, 193, 0.3);
             border-radius: 5px;
         }
@@ -193,7 +191,6 @@
             width: 100%; padding: 120px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
             position: relative; overflow: hidden;
         }
-        /* Divisores sutiles de cristal */
         .glass-panel {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(8px);
@@ -215,7 +212,6 @@
             text-shadow: 0 0 30px var(--silver-glow);
         }
 
-        /* Nueva clase para nombres manuscritos */
         .name-script {
             font-family: 'Pinyon Script', cursive; font-size: 60px;
             color: var(--silver-magic); margin-bottom: 5px; line-height: 1.2; font-weight: 400;
@@ -242,7 +238,6 @@
             box-shadow: 0 0 15px var(--silver-glow);
         }
 
-        /* Textos Informativos */
         .info-title {
             font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 5px; line-height: 1.4;
             text-transform: uppercase; color: var(--silver-dark); margin-bottom: 15px; font-weight: 600;
@@ -252,6 +247,62 @@
             font-family: 'Cormorant Garamond', serif; font-size: 38px;
             color: var(--silver-magic); margin-bottom: 5px; font-weight: 600; line-height: 1.3;
             text-shadow: 0 0 20px var(--silver-glow);
+        }
+
+        /* FOTOGRAFIAS COMPLETAS Y LIBRES */
+        .photo-full {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 12px;
+            margin: 50px auto;
+            display: block;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255, 182, 193, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s var(--transition-smooth);
+            position: relative;
+            z-index: 2;
+        }
+        .photo-full:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255, 182, 193, 0.3);
+        }
+
+        /* LIGHTBOX PARA VER FOTOS EN GRANDE */
+        #lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(6, 8, 16, 0.95);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        #lightbox img {
+            max-width: 95%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 40px var(--pink-glow);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px; right: 25px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10000;
+            line-height: 1;
+            font-family: sans-serif;
+            text-shadow: 0 0 10px rgba(255,182,193,0.5);
         }
 
         /* CUENTA REGRESIVA */
@@ -367,6 +418,7 @@
             .countdown-container { gap: 12px; }
             .time-box { min-width: 75px; padding: 15px 12px; }
             .time-number { font-size: 28px; }
+            .photo-full { margin: 30px auto; }
         }
     </style>
 </head>
@@ -397,7 +449,6 @@
         <div class="envelope-wrapper" onclick="openEnvelope()">
             <div class="front-flap"></div>
             <div class="wax-seal">
-                <!-- Sello con inicial -->
                 <svg viewBox="0 0 24 24" style="width:20px; height:20px;"><path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z"/></svg>
             </div>
             <div class="envelope"></div>
@@ -442,6 +493,9 @@
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+F%C3%A1tima+Lizeth&dates=20261120T220000Z/20261121T060000Z&details=Acompa%C3%B1anos+a+celebrar+esta+noche+m%C3%A1gica" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agendar Evento</a>
         </section>
 
+        <!-- Foto 1 -->
+        <img src="assets/1.jpg" class="anim-element anim-fade-up photo-full" onclick="openLightbox(this.src)" alt="Fátima Lizeth">
+
         <!-- Mensaje Especial Padres -->
         <section class="section-block glass-panel">
             <div class="anim-element anim-fade-up delay-1 info-title">A mis padres y a mi familia</div>
@@ -453,6 +507,9 @@
                 Los amo con todo mi corazón. Gracias por ser parte de mi historia y de este sueño. 🤍"
             </p>
         </section>
+
+        <!-- Foto 2 -->
+        <img src="assets/2.jpg" class="anim-element anim-fade-up photo-full" onclick="openLightbox(this.src)" alt="Fátima Lizeth">
 
         <!-- Familia -->
         <section class="section-block">
@@ -470,12 +527,16 @@
         <!-- Ubicación Ceremonia Religiosa -->
         <section class="section-block glass-panel">
             <div class="anim-element anim-fade-up delay-1 info-title">Ceremonia Religiosa</div>
-            <div class="anim-element anim-fade-up delay-2 info-data">Jardín Salón Doña Bella</div>
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 32px; line-height: 1.1; margin-bottom: 10px;">Parroquia de La Asunción de María, Tepalcatepec</div>
+            <div class="anim-element anim-fade-up delay-3 info-title" style="color: var(--pink-magic); margin-bottom: 30px;">1:00 PM</div>
             
-            <div class="anim-element anim-zoom delay-3 map-box">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.122078030741!2d-99.58460602452656!3d18.970215255284458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd950e928b7a61%3A0x883361e6e8bf5259!2sDo%C3%B1a%20Bella!5e0!3m2!1ses-419!2smx!4v1790045078063!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <!-- Foto Ceremonia -->
+            <img src="assets/ceremonia.jpg" class="anim-element anim-zoom delay-3 photo-full" onclick="openLightbox(this.src)" alt="Ceremonia Religiosa" style="margin-top: 10px; margin-bottom: 20px;">
+
+            <div class="anim-element anim-zoom delay-4 map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.907204923287!2d-99.5989357!3d18.9355011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cdbe28f6eeedc3%3A0xd9fc172b756b880c!2sParroquia%20de%20La%20Asunci%C3%B3n%20de%20Mar%C3%ADa%2C%20Tepalcatepec!5e0!3m2!1ses-419!2smx!4v1792032024000!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
-            <a href="https://share.google/fEnduQBn1YOmYh4Cf" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación en Mapa</a>
+            <a href="https://maps.app.goo.gl/n857J4oQgRt1XxQW8" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación en Mapa</a>
         </section>
 
         <!-- Ubicación Recepción e Itinerario -->
@@ -488,6 +549,9 @@
             </div>
             <a href="https://share.google/fEnduQBn1YOmYh4Cf" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación en Mapa</a>
 
+            <!-- Foto 3 -->
+            <img src="assets/3.jpg" class="anim-element anim-fade-up photo-full" style="margin-top: 80px;" onclick="openLightbox(this.src)" alt="Fátima Lizeth">
+
             <div class="anim-element anim-zoom line-horizontal" style="margin: 70px auto;"></div>
 
             <!-- ITINERARIO -->
@@ -495,7 +559,7 @@
             
             <div class="anim-element anim-fade-up delay-2 timeline">
                 <div class="timeline-item">
-                    <div class="time-badge">4:00 PM</div>
+                    <div class="time-badge">1:00 PM</div>
                     <div class="time-desc">Ceremonia Religiosa</div>
                 </div>
                 <div class="timeline-item">
@@ -531,6 +595,9 @@
             </p>
         </section>
 
+        <!-- Foto 4 -->
+        <img src="assets/4.jpg" class="anim-element anim-fade-up photo-full" onclick="openLightbox(this.src)" alt="Fátima Lizeth">
+
         <!-- Mesa de Regalos -->
         <section class="section-block glass-panel">
             <div class="anim-element anim-fade-up delay-1 info-title">Sugerencias de Regalo</div>
@@ -542,14 +609,10 @@
             <p class="anim-element anim-fade-up delay-4 body-serif" style="margin-top: 15px;">
                 Es la tradición de regalar efectivo en un sobre el día del evento. Habrá un buzón especial en la recepción.
             </p>
-
-            <div class="anim-element anim-zoom line-horizontal" style="margin: 50px auto; width: 50px; background: rgba(224,230,237,0.3);"></div>
-
-            <div class="anim-element anim-fade-up delay-3 info-data">Mesa de Regalos Liverpool</div>
-            <p class="anim-element anim-fade-up delay-4 body-serif" style="margin-top: 15px;">
-                Si lo deseas, también puedes buscar mi mesa de regalos en tienda física o en línea.
-            </p>
         </section>
+
+        <!-- Foto 5 -->
+        <img src="assets/5.jpg" class="anim-element anim-fade-up photo-full" onclick="openLightbox(this.src)" alt="Fátima Lizeth">
 
         <!-- Playlist -->
         <section class="section-block">
@@ -575,6 +638,9 @@
             </p>
             <a href="https://drive.google.com/drive/folders/1nmu_Tc5Xm9nB6ZpjduJTLl1UXRvoABi4?usp=sharing" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Subir mis Fotos</a>
         </section>
+
+        <!-- Foto 6 -->
+        <img src="assets/6.jpg" class="anim-element anim-fade-up photo-full" onclick="openLightbox(this.src)" alt="Fátima Lizeth">
 
         <!-- RSVP, Pases y Muro de Deseos -->
         <section class="section-block" style="padding-bottom: 180px;">
@@ -646,6 +712,12 @@
         </section>
 
     </main>
+
+    <!-- VISOR LIGHTBOX PARA LAS FOTOS -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-close">&times;</div>
+        <img id="lightbox-img" src="" alt="Visor de imágenes">
+    </div>
 
     <script>
         // --- EFECTO MAGIA SUPER BRILLANTE: CANVAS LLUVIA DE ESTRELLAS ---
@@ -768,6 +840,20 @@
             isMusicPlaying = !isMusicPlaying;
         }
 
+        // --- FUNCIONES LIGHTBOX (VISOR DE FOTOS) ---
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            lbImg.src = src;
+            lb.style.display = 'flex';
+            setTimeout(() => lb.classList.add('active'), 10);
+        }
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            setTimeout(() => lb.style.display = 'none', 400);
+        }
+
         // --- ANIMACIÓN INICIAL DEL SOBRE ---
         function openEnvelope() {
             const wrapper = document.querySelector('.envelope-wrapper');
@@ -843,7 +929,7 @@
         let nombreInvitado = "Invitado Especial";
         const urlParams = new URLSearchParams(window.location.search);
         
-        // Base de datos de invitados simulada (Puedes agregar los reales aquí)
+        // Base de datos de invitados simulada
         const dbInvitados = {
             "1": { nombre: "Familia Gómez Romero", pases: 5 },
             "2": { nombre: "Familia Gómez Sánchez", pases: 4 },
