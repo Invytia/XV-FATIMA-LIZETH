@@ -19,8 +19,6 @@
             --text-light: #F8F9FA;     
             --text-muted: #B0B8C1;
             
-            --envelope-white: #FFFFFF;
-            
             --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -82,7 +80,7 @@
         .sticky-music-btn:hover { transform: scale(1.15); box-shadow: 0 0 35px var(--silver-glow); }
         .sticky-music-btn svg { width: 18px; height: 18px; fill: var(--bg-night); }
 
-        /* --- SOBRE BLANCO INICIAL MÁGICO --- */
+        /* --- SOBRE INICIAL MÁGICO ROSA PASTEL --- */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: transparent; 
@@ -108,31 +106,31 @@
 
         .envelope-wrapper { 
             position: relative; cursor: pointer; transition: transform 0.6s var(--transition-smooth); z-index: 10; 
-            box-shadow: 0 0 80px rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 80px rgba(255, 182, 193, 0.4);
             border-radius: 5px;
         }
-        .envelope-wrapper:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 100px rgba(255, 182, 193, 0.5); }
+        .envelope-wrapper:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 100px rgba(255, 182, 193, 0.6); }
 
         .envelope {
             position: relative; width: 320px; height: 210px;
-            background-color: var(--envelope-white); border-radius: 2px;
+            background-color: #FFE4E8; border-radius: 2px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
             border: 1px solid rgba(255,255,255,0.1);
         }
         .envelope::before {
             content: ''; position: absolute; top: 0; right: 0;
-            border-right: 160px solid #F5F5F5; border-top: 105px solid transparent;
-            border-bottom: 105px solid #F5F5F5; z-index: 2;
+            border-right: 160px solid #FFC0CB; border-top: 105px solid transparent;
+            border-bottom: 105px solid #FFC0CB; z-index: 2;
         }
         .envelope::after {
             content: ''; position: absolute; top: 0; left: 0;
-            border-left: 160px solid #EDEDED; border-top: 105px solid transparent;
-            border-bottom: 105px solid #EDEDED; z-index: 2;
+            border-left: 160px solid #FFB6C1; border-top: 105px solid transparent;
+            border-bottom: 105px solid #FFB6C1; z-index: 2;
         }
         .front-flap {
             position: absolute; top: 0; left: 0;
             border-left: 160px solid transparent; border-right: 160px solid transparent;
-            border-top: 115px solid #E0E0E0; transform-origin: top;
+            border-top: 115px solid #FF9EAE; transform-origin: top;
             transition: transform 0.9s var(--transition-smooth); z-index: 4;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));
         }
@@ -247,6 +245,67 @@
             font-family: 'Cormorant Garamond', serif; font-size: 38px;
             color: var(--silver-magic); margin-bottom: 5px; font-weight: 600; line-height: 1.3;
             text-shadow: 0 0 20px var(--silver-glow);
+        }
+
+        /* CAJAS DRESS CODE */
+        .dress-code-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .dc-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            border-radius: 15px;
+            padding: 25px 20px;
+            width: 85%;
+            max-width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 182, 193, 0.1);
+            backdrop-filter: blur(8px);
+            transition: transform 0.4s ease;
+        }
+        .dc-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 182, 193, 0.2);
+        }
+        .dc-box img {
+            width: 70px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(255,182,193,0.5));
+        }
+        .dc-box span {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: var(--silver-magic);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .dc-separator {
+            width: 80px;
+            height: auto;
+            margin: 15px 0;
+            filter: drop-shadow(0 0 15px rgba(255,182,193,0.5));
+        }
+
+        @media (min-width: 650px) {
+            .dress-code-icons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 0;
+            }
+            .dc-separator {
+                margin: 0 30px;
+            }
         }
 
         /* FOTOGRAFIAS COMPLETAS Y LIBRES */
@@ -439,7 +498,7 @@
         <svg id="music-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
 
-    <!-- PANTALLA INICIAL DEL SOBRE MÁGICO -->
+    <!-- PANTALLA INICIAL DEL SOBRE MÁGICO ROSA PASTEL -->
     <div id="envelope-screen">
         <div class="envelope-text-container">
             <div class="env-tag">Mis XV Años</div>
@@ -599,8 +658,23 @@
                 <strong>Caballeros:</strong> Traje formal.<br>
                 <strong>Damas:</strong> Vestido largo de noche.
             </p>
+
+            <!-- ICONOS MUJERES Y HOMBRES -->
+            <div class="dress-code-icons">
+                <div class="dc-box anim-element anim-fade-up delay-2">
+                    <img src="assets/mujeres.png" alt="Mujeres">
+                    <span>Mujeres</span>
+                </div>
+                
+                <img src="assets/flores.png" class="dc-separator anim-element anim-zoom delay-3" alt="Flores decorativas">
+                
+                <div class="dc-box anim-element anim-fade-up delay-4">
+                    <img src="assets/hombres.png" alt="Hombres">
+                    <span>Hombres</span>
+                </div>
+            </div>
             
-            <p class="anim-element anim-fade-up delay-4 body-serif" style="color: var(--pink-magic); font-size: 20px; margin-top: 25px; font-weight: 500; text-shadow: 0 0 10px var(--pink-glow);">
+            <p class="anim-element anim-fade-up delay-4 body-serif" style="color: var(--pink-magic); font-size: 20px; margin-top: 35px; font-weight: 500; text-shadow: 0 0 10px var(--pink-glow);">
                 * Apreciamos mucho que nos ayuden reservando los colores Azul Marino y Plateado para el uso exclusivo de la quinceañera.
             </p>
         </section>
